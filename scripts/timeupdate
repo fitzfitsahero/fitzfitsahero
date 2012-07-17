@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# This script updates the system clock when run. It should be housed in cron.something
+
+rdate -s nist1-ny.ustiming.org

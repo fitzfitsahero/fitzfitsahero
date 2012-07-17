@@ -1,0 +1,1 @@
+cat /opt/bin/bofh.txt | sort -R | tail -1 | sed 's/\(.*\)./\1/'

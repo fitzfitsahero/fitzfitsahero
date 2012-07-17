@@ -1,0 +1,110 @@
+# Conky, a system monitor, based on torsmo
+#
+# Any original torsmo code is licensed under the BSD license
+#
+# All code written since the fork of torsmo is licensed under the GPL
+#
+# Please see COPYING for details
+#
+# Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+# Copyright (c) 2005-2009 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+# All rights reserved.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+alignment top_right
+background yes
+border_width 1
+cpu_avg_samples 2
+
+default_color white
+default_outline_color white
+default_shade_color white
+
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+
+use_xft yes
+xftfont Droid Sans:size=10
+
+gap_x 20
+gap_y 50
+
+maximum_width 250
+
+minimum_size 5 5
+net_avg_samples 2
+no_buffers yes
+
+out_to_console no
+out_to_stderr no
+
+extra_newline no
+
+# Not sure if type matters
+own_window yes
+#own_window_class Conky
+own_window_transparent yes
+own_window_type override
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+
+stippled_borders 0
+update_interval 1.0
+uppercase no
+use_spacer none
+
+show_graph_scale no
+show_graph_range no
+temperature_unit fahrenheit
+
+TEXT
+$nodename - $kernel
+$hr
+#${color grey}Uptime:$color $uptime
+${color grey}CPU0:$color ${cpu cpu0} % ${alignr}${cpubar cpu0 10,90}
+${cpugraph cpu0 20, 250 0bffeb 0bffeb}
+${color grey}CPU1:$color ${cpu cpu1} % ${alignr}${cpubar cpu1 10,90}
+${cpugraph cpu1 20, 250 ffa500 ffa500}
+${color grey}Disk I/O:$color ${diskio /dev/sda}
+${diskiograph /dev/sda 20, 250 d40f00 d40f00} 
+${color grey}RAM:$color $memperc% ${alignr} ${mem} ${membar 10,90}
+${color grey}Swap:$color $swapperc% ${alignr}${swapbar 10,90}
+${color grey}Uptime:$color $uptime
+$hr
+${color grey}File systems:
+/ ${color}${fs_used /}/${fs_size /} 
+${fs_bar 10 /}
+${color grey} /home ${color}${fs_used /home}/${fs_size /home}
+${fs_bar 10 /home}
+${color grey} /boot ${color}${fs_used /boot}/${fs_size /boot}
+${fs_bar 10 /boot}
+${hr}
+${color grey}Network:${color}${alignr}${addr eth0}
+${color grey}Up:$color ${upspeedf eth0} kb/s ${color} 
+${alignr}${upspeedgraph eth0 40, 250 fe1402 d40f00} 
+Down:$color ${downspeedf eth0} kb/s ${color}  
+${alignr}${downspeedgraph eth0 40, 250 19fb01 14d400} 
+Upload:$color ${alignr}${totalup eth0}${color grey}
+Download:$color ${alignr}${totaldown eth0}
+$hr
+${alignc}${time %A %B %d}
+${alignc 40}${font Droid Sans:size=24}${time %I:%M %p}${font}
+${alignc 45}${font ConkyWeather:size=72}${execi 3600 conkyForecast --location=USNY1232 --datatype=WF}${font}
+${alignc}${font}${execi 3600 conkyForecast --location=USNY1232 --datatype=CC}
+${alignc 40}${font :size=24}${execi 3600 conkyForecast --location=USNY1232 --datatype=HT -i}/${font :size=24}${execi 3600 conkyForecast --location=USNY1232 --datatype=LT -i}
+#${alignc 40}${font :size=24}${execi 3600 conkyForecast --location=USNY1232 --template=/etc/conky/conkyForecast.template} 
+

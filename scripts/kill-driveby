@@ -1,0 +1,47 @@
+#!/usr/bin/perl
+
+# This script kills the specified pid and the ones right next to it. Inspired by BOFH
+
+$flag = 0;
+$tokill = $ARGV[0];
+
+#printf "$tokill\n\n\n\n";
+
+open(PS, "ps aux|");
+
+while(<PS>)
+{
+	($uid, $pid, $rest) = split;
+
+	push(@pid,$pid);
+	
+	#if($pid == $tokill)
+	#{
+	#	print "** ";
+	#	print "$pid **\n";
+	#}
+}
+
+close(PS);
+#print "@pid";
+$count = @pid;
+#print "$count\n";
+for($i = 0; $i < $count; $i++)
+{
+	#print "$i";
+	if(@pid[$i] == $tokill)
+	{
+		#print "@pid[$i-1]\n";
+		#print "@pid[$i]\n";
+		#print "@pid[$i+1]\n";
+		`kill -9 @pid[$i-1]`;
+		`kill -9 @pid[$i]`;
+		`kill -9 @pid[$i+1]`;
+		$flag = 1;
+	}
+}
+
+if($flag == 0)
+{
+	print "No Process with PID: $tokill, dumbass\n";
+}

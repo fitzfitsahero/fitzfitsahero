@@ -120,12 +120,3 @@ function adobe() { evince $! & }
 alias grep="grep --color=auto --exclude=*~ -I"
 
 alias pss="ps aux | grep -v grep | grep "
-
-alias rdphome="rdesktop -u fitz -N -a 16 -x b -g 1280x1024 fitzfitsahero.dyndns.org &"
-
-#alias sshhome="ssh -l brendan fitzfitsahero.dyndns.org"
-alias sshhome="ssh fitz@fitzfitsahero.dyndns.org -p2222"
-alias sshlisa="ssh -l fitz 129.21.6.229"
-alias sshph="ssh -Y phoenix"
-
-function rsyncph() { rsync -avz $1 bxf4484@phoenix.ce.rit.edu:$2 ;}

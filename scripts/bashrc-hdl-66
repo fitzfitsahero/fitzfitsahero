@@ -104,7 +104,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-PATH=$PATH:/opt/bin:/home/bxf4484/sescutils/install/bin
+PATH=$PATH:/opt/bin
 
 # User specific aliases and functions
 alias ..="cd .."

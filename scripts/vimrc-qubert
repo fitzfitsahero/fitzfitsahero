@@ -8,3 +8,7 @@ set smartindent
 set expandtab
 set shiftwidth=4
 set bg=dark
+
+nnoremap <C-l> :nohlsearch<CR><C-l>
+autocmd InsertEnter * :setlocal nohlsearch
+autocmd InsertLeave * :setlocal hlsearch

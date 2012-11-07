@@ -90,7 +90,8 @@ PATH=$PATH:/opt/bin
 #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\][\h] \[\033[00m\]\[\033[01;36m\]\u \w \$\[\033[00m\] '
 #export PS1=${Green}'\T'${Color_Off}' '${Blue}'\u@\h'${Color_Off}${IGreen}' $ '${Color_Off}
 #export PS1=${BYellow}'[\h] '${Color_Off}${Blue}'\u '${Color_Off}${Red}'[\T]\n'${Color_Off}${Purple}' \w '${Color_Off}${IGreen}'$ '${Color_Off}
-PS1=${BYellow}'[\h] '${Color_Off}${Blue}'\u '${Color_Off}${Red}'[\T]\n'${Color_Off}${Purple}' \w '${Color_Off}${IGreen}'$ '${Color_Off}
+#PS1=${BYellow}'[\h] '${Color_Off}${Blue}'\u '${Color_Off}${Red}'[\T]\n'${Color_Off}${Purple}' \w '${Color_Off}${IGreen}'$ '${Color_Off}
+PS1=${BYellow}'[\h] '${Color_Off}${Blue}'\u '${Color_Off}${Red}'[\T]\n'${Color_Off}${Purple}'$(pwd) '${Color_Off}${IGreen}'$ '${Color_Off}
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in

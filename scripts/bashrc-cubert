@@ -107,13 +107,14 @@ function _git_prompt() {
 			branch="(`git describe --all --contains --abbrev=4 HEAD 2> /dev/null || echo HEAD`)"
 		fi
 		#echo -n '\[\e[0;30;'"$ansi"';1m\]'"$branch"'\[\e[0m\] '
-		echo -n "$ansi""($branch)"${Color_Off}
+		echo -n "$ansi""($branch) "${Color_Off}
 	fi
 }
 
 function _prompt_command() {
 	#PS1=${BYellow}'[\h] '${Color_Off}${Blue}'\u '${Color_Off}${Red}'[\T]\n'"`_git_prompt`"${Color_Off}${Purple}' \w '${Color_Off}${IGreen}'$ '${Color_Off}
-	PS1=${BYellow}'[\h] '${Color_Off}${Blue}'\u '${Color_Off}${Red}'[\T]\n'"`_git_prompt`"${Color_Off}${Purple}' `pwd` '${Color_Off}${IGreen}'$ '${Color_Off}
+	#PS1=${BYellow}'[\h] '${Color_Off}${Blue}'\u '${Color_Off}${Red}'[\T]\n'"`_git_prompt`"${Color_Off}${Purple}' `pwd` '${Color_Off}${IGreen}'$ '${Color_Off}
+	PS1=${BWhite}'[\h] '${Color_Off}${Blue}'\u '${Color_Off}${Red}'[\T]\n'${Color_Off}${Purple}'`pwd` '${Color_Off}"` _git_prompt`"${IGreen}'$ '${Color_Off}
 }
 PROMPT_COMMAND=_prompt_command
 

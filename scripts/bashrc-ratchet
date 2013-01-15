@@ -7,6 +7,7 @@ fi
 
 # User specific aliases and functions
 export TERM='xterm-256color'
+#export TERM='xterm-color'
 
 # Colors
 Color_Off="\[\033[0m\]"       # Text Reset
@@ -83,7 +84,7 @@ On_IPurple="\[\033[10;95m\]"  # Purple
 On_ICyan="\[\033[0;106m\]"    # Cyan
 On_IWhite="\[\033[0;107m\]"   # White
 
-PATH=$PATH
+PATH=$PATH:/opt/bin:/opt/gcc-4.6.3/bin
 
 function _git_prompt() {
 	local git_status="`git status -unormal 2>&1`"
@@ -91,16 +92,16 @@ function _git_prompt() {
 		if [[ "$git_status" =~ nothing\ to\ commit ]]; then
 			#local ansi=42
 		# Same as repo
-			#local ansi=${Green}
-			local ansi="\[\033[1m\]"
+			local ansi=${Green}
+			#local ansi="\[\033[1m\]"
 		elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
 			#local ansi=43
 		# Untracked, but unmodified files
-			local ansi=${BYellow}
+			local ansi=${Yellow}
 		else
 			#local ansi=42
 		# Modified files
-			local ansi=${BRed}
+			local ansi=${Red}
 		fi
 		if [[ "$git_status" =~ On\ branch\ ([^[:space:]]+) ]]; then
 			branch=${BASH_REMATCH[1]}
@@ -118,7 +119,7 @@ function _prompt_command() {
 	#PS1=${BYellow}'[\h] '${Color_Off}${Blue}'\u '${Color_Off}${Red}'[\T]\n'"`_git_prompt`"${Color_Off}${Purple}' \w '${Color_Off}${IGreen}'$ '${Color_Off}
 	#PS1=${BYellow}'[\h] '${Color_Off}${Blue}'\u '${Color_Off}${Red}'[\T]\n'"`_git_prompt`"${Color_Off}${Purple}' `pwd` '${Color_Off}${IGreen}'$ '${Color_Off}
 	#PS1=${BWhite}'[\h] '${Color_Off}${Blue}'\u '${Color_Off}${Red}'[\T]\n'${Color_Off}${Purple}'`pwd` '${Color_Off}"` _git_prompt`"${IGreen}'$ '${Color_Off}
-	PS1=${BWhite}'[\h] '${Color_Off}${Blue}'\u '${Color_Off}${Red}'[\T]\n'${Color_Off}${Purple}'`pwd` '${Color_Off}"` _git_prompt`"${GGreen}'$ '${Color_Off}
+	PS1=${BWhite}'[\h] '${Color_Off}${Blue}'\u '${Color_Off}${Red}'[\T]\n'${Color_Off}${Purple}'`pwd` '${Color_Off}"` _git_prompt`"${Green}'$ '${Color_Off}
 }
 PROMPT_COMMAND=_prompt_command
 
@@ -177,6 +178,9 @@ alias pss="ps aux | grep -v grep | grep "
 alias nibbler='ssh fitz@fitzfitsahero.com -p 2222'
 alias zeus='ssh -Y fitz@zeus.cs.binghamton.edu'
 alias hades='ssh -Y fitz@hades.cs.binghamton.edu'
+alias bertha='ssh fitz@bertha.cs.binghamton.edu'
+
+alias rdphome='rdesktop -u fitz -g 60% fitzfitsahero.com'
 
 alias rnibbler="rsync -avz --rsh='ssh -p2222' fitzfitsahero.com:"
 

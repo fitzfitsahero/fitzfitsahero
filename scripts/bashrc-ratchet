@@ -92,16 +92,16 @@ function _git_prompt() {
 		if [[ "$git_status" =~ nothing\ to\ commit ]]; then
 			#local ansi=42
 		# Same as repo
-			local ansi=${Green}
+			local ansi=${GGreen}
 			#local ansi="\[\033[1m\]"
 		elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
 			#local ansi=43
 		# Untracked, but unmodified files
-			local ansi=${Yellow}
+			local ansi=${BYellow}
 		else
 			#local ansi=42
 		# Modified files
-			local ansi=${Red}
+			local ansi=${BRed}
 		fi
 		if [[ "$git_status" =~ On\ branch\ ([^[:space:]]+) ]]; then
 			branch=${BASH_REMATCH[1]}
@@ -119,7 +119,7 @@ function _prompt_command() {
 	#PS1=${BYellow}'[\h] '${Color_Off}${Blue}'\u '${Color_Off}${Red}'[\T]\n'"`_git_prompt`"${Color_Off}${Purple}' \w '${Color_Off}${IGreen}'$ '${Color_Off}
 	#PS1=${BYellow}'[\h] '${Color_Off}${Blue}'\u '${Color_Off}${Red}'[\T]\n'"`_git_prompt`"${Color_Off}${Purple}' `pwd` '${Color_Off}${IGreen}'$ '${Color_Off}
 	#PS1=${BWhite}'[\h] '${Color_Off}${Blue}'\u '${Color_Off}${Red}'[\T]\n'${Color_Off}${Purple}'`pwd` '${Color_Off}"` _git_prompt`"${IGreen}'$ '${Color_Off}
-	PS1=${BWhite}'[\h] '${Color_Off}${Blue}'\u '${Color_Off}${Red}'[\T]\n'${Color_Off}${Purple}'`pwd` '${Color_Off}"` _git_prompt`"${Green}'$ '${Color_Off}
+	PS1=${BWhite}'[\h] '${Color_Off}${Blue}'\u '${Color_Off}${Red}'[\T]\n'${Color_Off}${Purple}'`pwd` '${Color_Off}"` _git_prompt`"${GGreen}'$ '${Color_Off}
 }
 PROMPT_COMMAND=_prompt_command
 

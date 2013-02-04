@@ -129,7 +129,7 @@ function _git_prompt() {
         elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
             #local ansi=43
         # Untracked, but unmodified files
-            local ansi=${BYellow}
+            local ansi=${IYellow}
         else
             #local ansi=42
         # Modified files

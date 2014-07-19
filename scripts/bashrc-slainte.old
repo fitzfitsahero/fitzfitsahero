@@ -126,16 +126,13 @@ function _git_stash() {
   fi
 }
 
-# git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
-
-
 function _git_prompt() {
     local git_status="`git status -unormal 2>&1`"
     if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
         if [[ "$git_status" =~ nothing\ to\ commit ]]; then
             #local ansi=42
         # Same as repo
-            local ansi=${Green}
+            local ansi=${GGreen}
         #local ansi="\[\033[1m\]"
         elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
             #local ansi=43
@@ -150,17 +147,11 @@ function _git_prompt() {
             branch=${BASH_REMATCH[1]}
             #test "$branch" != master || branch=' '
             test branch=' '
-        #elif [[ "$git_status" =~ detached\ ([^[:space:]]+) ]]; then
-            #branch="detached ${BASH_REMATCH[1]}"
-        #    echo -n 'test'
-        #    branch=${BASH_REMATCH[2]}
         else
-        # Detached?
-            branch="`git describe --all --contains --abbrev=4 HEAD 2> /dev/null | sed 's/~/ Detach/'|| echo HEAD`"
+            branch="(`git describe --all --contains --abbrev=4 HEAD 2> /dev/null || echo HEAD`)"
         fi
             #echo -n '\[\e[0;30;'"$ansi"';1m\]'"$branch"'\[\e[0m\] '
-            #echo -n "$ansi""($branch)" `_git_stash` "${Color_Off}"
-            echo -n "$ansi""($branch)" "${Color_Off}"
+        echo -n "$ansi""($branch)" `_git_stash` "${Color_Off}"
     fi
 }
 

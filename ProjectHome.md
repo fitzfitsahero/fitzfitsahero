@@ -1,0 +1,1 @@
+I need a place to keep things accessible, should you find a need for my code, steal it.

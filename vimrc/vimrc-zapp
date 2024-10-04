@@ -1,0 +1,12 @@
+set nu
+syntax on
+set ts=2
+
+
+if has("autocmd")
+ " Enabled file type detection
+ " Enabled file language-dependent indenting
+ filetype plugin on
+ filetype indent on
+endif " has ("autocmd")
+let b:verilog_indent_modules = 1
